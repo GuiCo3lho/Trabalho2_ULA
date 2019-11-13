@@ -18,17 +18,17 @@ architecture a of genImm32 is
 	signal format : FORMAT_RV;
 	
 begin
-	opcode <= '0' & instr(6 downto 0);
+	opcode <= '0' & instr(6 downto 0); -- instruction has only 7 bits for opcode
 	case opcode is
-		when X"33"  => format := R_type;
-		when X"03"|X"13"|X"67"  => format := I_type;
-		--when X"13"  => format := I_type;
+		when X"33"  => format := R_type; -- b00110011
+		when X"03"|X"13"|X"67"  => format := I_type; -- b00000011 | b00010011 | b01100111
+		--when X"13"  => format := I_type; 
 		--when X"67"  => format := I_type;
-		when X"23"  => format := S_type;
-		when X"63"  => format := SB_type;
-		when X"37"|X"17"  => format := U_type;
-		when X"6F"  => format := UJ_type;
-		when others => format := R_type;
+		when X"23"  => format := S_type; -- b00100011
+		when X"63"  => format := SB_type; --b01100011
+		when X"37"|X"17"  => format := U_type; - b00110111 | b00010111
+		when X"6F"  => format := UJ_type; - b01101111
+		when others => format := R_type; - bXXXXXXXX
 	end case;
 	
 	logic : process(format)

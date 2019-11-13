@@ -35,7 +35,7 @@ begin
 		instr <=  X"16200313";
 		wait for 4 ps;	
 	   --- jalr zero, zero, 0x18, instr = 0x01800067 I-type2 imm32 = 0x18/24
-		instr <=  X"01800067";	
+		instr <=  X"01800067";		
 		wait for 4 ps;	
 	   --- lui s0, 2, instr = 0x00002437 U-type imm32 = 0x2000
 		instr <=  X"00002437";
