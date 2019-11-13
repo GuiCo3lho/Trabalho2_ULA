@@ -1,0 +1,119 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
+entity ula_tb is
+end ula_tb;
+
+architecture tb_arch of ula_tb is
+signal opcode	: std_logic_vector(3 downto 0);					-- operacao a ser realizada
+signal A			: std_logic_vector(31 downto 0);	-- operandos 32 bits
+signal B			: std_logic_vector(31 downto 0);	-- operandos 32 bits
+signal Z			: std_logic_vector(31 downto 0);  -- sai­da 32 bits
+signal zero		: std_logic;									-- indicacao de zero na saida
+
+component ulaRV
+	port ( opcode	: in std_logic_vector(3 downto 0);						-- operacao a ser realizada
+			 A, B		: in std_logic_vector(31 downto 0);	-- operandos 32 bits
+			 Z			: out std_logic_vector(31 downto 0);  -- sai­da 32 bits
+			 zero		: out std_logic ); 								-- indicacao de zero na saida
+end component;
+
+begin
+	test: ulaRV port map(opcode=>opcode, A=>A, B=>B, Z=>Z, zero=>zero);
+	init: process
+	begin
+	   --- A + B
+		A <=  X"00000008"; B<=  X"00000008"; opcode <= "0000"; 
+		wait for 4 ps;
+		A <=  X"00000009"; B<=  X"FFFFFFFF"; opcode <= "0000";
+		wait for 4 ps;
+		---A <=  X"08"; B<=  X"FFFF"; opcode <= "0000";
+		---wait for 4 ps;
+		
+		--- A-B
+		A <=  X"00000012"; B<=  X"00000008"; opcode <= "0001";
+		wait for 4 ps;
+		A <=  X"00000008"; B<=  X"00000012"; opcode <= "0001";
+		wait for 4 ps;
+		A <=  X"00000009"; B<=  X"FFFFFFFF"; opcode <= "0001";
+		wait for 4 ps;	
+		--- caso overflow
+		
+		--- AND
+		A <=  X"00000012"; B<=  X"00000008"; opcode <= "0010"; 
+		wait for 4 ps;
+		
+		--- OR
+		A <=  X"00000013"; B<=  X"00000009"; opcode <= "0011"; 
+		wait for 4 ps;	
+
+		--- XOR
+		A <=  X"00000014"; B<=  X"00000010"; opcode <= "0100"; 
+		wait for 4 ps;		
+		
+		--- SLL
+		A <=  X"00000015"; B<=  X"00000011"; opcode <= "0101"; 
+		wait for 4 ps;	
+		
+		--- SRL
+		A <=  X"00000016"; B<=  X"00000012"; opcode <= "0110"; 
+		wait for 4 ps;	
+		
+		--- SRA
+		A <=  X"00000012"; B<=  X"00000008"; opcode <= "0111"; 
+		wait for 4 ps;	
+
+		--- SLT  Z=1 se A < B, com sinal
+		A <=  X"FFFFFFFF"; B <= X"00000009"; opcode <= "1000";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1000";
+		wait for 4 ps;
+		A <=  X"00000012"; B <= X"00000008"; opcode <= "1000";
+		wait for 4 ps;	
+		
+		--- SLTU  Z=1 se A < B, sem sinal
+		A <=  X"FFFFFFFF"; B <= X"00000009"; opcode <= "1001";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1001";
+		wait for 4 ps;
+		A <=  X"00000012"; B <= X"00000008"; opcode <= "1001";
+		wait for 4 ps;	
+	
+		--- SGE  Z=1 se A >= B com sinal 
+		A <=  X"FFFFFFFF"; B <= X"00000009"; opcode <= "1010";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1010";
+		wait for 4 ps;
+		A <=  X"00000012"; B <= X"00000008"; opcode <= "1010";
+		wait for 4 ps;	
+		A <=  X"00000009"; B <= X"00000009"; opcode <= "1010";
+		wait for 4 ps;
+		
+		--- SGEU  Z=1 se A >= B sem sinal 
+		A <=  X"FFFFFFFF"; B <= X"00000008"; opcode <= "1011";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1011";
+		wait for 4 ps;
+		A <=  X"00000012"; B <= X"00000008"; opcode <= "1011";
+		wait for 4 ps;	
+		
+		--- SEQ   Z=1 se A == B
+		A <=  X"FFFFFFFF"; B <= X"FFFFFFFF"; opcode <= "1100";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1100";
+		wait for 4 ps;
+		
+		--- SNE  Z=1 Z=1 se A != B 
+		A <=  X"FFFFFFFF"; B <= X"00000008"; opcode <= "1101";
+		wait for 4 ps;
+		A <=  X"00000008"; B <= X"00000012"; opcode <= "1101";
+		wait for 4 ps;
+		A <=  X"00000012"; B <= X"00000008"; opcode <= "1101";
+		wait for 4 ps;		
+			
+		
+	end process init;
+end tb_arch;
+

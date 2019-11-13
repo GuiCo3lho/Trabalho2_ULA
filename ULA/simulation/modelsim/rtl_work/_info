@@ -1,0 +1,79 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Olívia\Documents\Hevelyn\OAC2\ULA\simulation\modelsim
+Eula_tb
+Z1 w1572109369
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 dC:\Users\Olívia\Documents\Hevelyn\OAC2\ULA\simulation\modelsim
+Z6 8C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ula_tb.vhd
+Z7 FC:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ula_tb.vhd
+l0
+L6
+VATZfMei]VQzPP1X2IN:950
+!s100 YCF]Z712D4F0GeJZj@Un`3
+Z8 OV;C;10.1d;51
+31
+!i10b 1
+Z9 !s108 1572109618.407000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ula_tb.vhd|
+Z11 !s107 C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ula_tb.vhd|
+Z12 o-93 -work work -O0
+Z13 tExplicit 1
+Atb_arch
+R2
+R3
+R4
+DEx4 work 6 ula_tb 0 22 ATZfMei]VQzPP1X2IN:950
+l24
+L9
+VKek=mA7CMWWF3a1F^`LHU3
+!s100 Dam_aD^6K^C^XGg294If13
+R8
+31
+!i10b 1
+R9
+R10
+R11
+R12
+R13
+Eularv
+Z14 w1572106140
+R2
+R3
+R4
+R5
+Z15 8C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ulaRV.vhd
+Z16 FC:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ulaRV.vhd
+l0
+L7
+VUU2MSD2c[FcVU>G3;Bja@3
+R8
+31
+Z17 !s108 1572109618.032000
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ulaRV.vhd|
+Z19 !s107 C:/Users/Olívia/Documents/Hevelyn/OAC2/ULA/ulaRV.vhd|
+R12
+R13
+!s100 R5]=]=8o^P8FfOd7T0YFh3
+!i10b 1
+Aula
+R2
+R3
+R4
+DEx4 work 5 ularv 0 22 UU2MSD2c[FcVU>G3;Bja@3
+l21
+L15
+Vz;STU`c:;MKobhz_n8IID0
+R8
+31
+R17
+R18
+R19
+R12
+R13
+!s100 Zb=IWD2]LkQO27oC?5F133
+!i10b 1
